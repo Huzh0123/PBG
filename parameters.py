@@ -6,7 +6,7 @@
 #Defining parameters for the simulation 
 
 # defining particle type, valid types: 'sphere', 'cylinder', 'Raschig Ring', 'f_point_star', 'three_holes', 'four_holes', 'tri_lobes', 'quadrilobes', 'four_hole_sphere'
-Particle_type = 'sphere'
+Particle_type = 'Raschig Ring'
 
 ##Tube's dimensions
 # Raduis of the Tube
@@ -18,7 +18,7 @@ cyl_depth = 50
 
 ## Particles Properties
 #Number of Particles
-number_of_particle = 70
+number_of_particle = 10
 #Particle radius !! in case of Rashig Ring this is outer radius
 particle_radius = 1
 #particle innter radius for extruded geometries
@@ -49,7 +49,7 @@ rotational_damping = 0.1
 remove_the_tube = True
 
 #Do you want to calculate the angle distribution of the particles after the bed is generated?
-angle_dist = True
+angle_dist = False
 #Where do you want to save the angle_dist results?
 file_name ='500_fh_N=6.txt'
 #Where to save the blender working file? this file gives access to the packing with discrete particles

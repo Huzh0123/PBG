@@ -1,0 +1,9 @@
+Frequency of the particles in the range of 0-10 is: 0.04285714285714286 
+Frequency of the particles in the range of 10-20 is: 0.07142857142857142 
+Frequency of the particles in the range of 20-30 is: 0.2 
+Frequency of the particles in the range of 30-40 is: 0.12857142857142856 
+Frequency of the particles in the range of 40-50 is: 0.15714285714285714 
+Frequency of the particles in the range of 50-60 is: 0.12857142857142856 
+Frequency of the particles in the range of 60-70 is: 0.12857142857142856 
+Frequency of the particles in the range of 70-80 is: 0.05714285714285714 
+Frequency of the particles in the range of 80-90 is: 0.08571428571428572 
