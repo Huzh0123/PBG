@@ -87,16 +87,16 @@ bpy.ops.wm.save_as_mainfile(filepath = parameters.blender_file_path)
 print("Exporting the geometry as a STL file...")
 bpy.ops.export_mesh.stl(filepath=parameters.file_path, check_existing=True, axis_forward='Y', axis_up='Z', filter_glob= ".STL", global_scale=1, ascii=False, use_mesh_modifiers=True)
 
-#radial porosity measurment
-decision = ''
-while decision != 'Yes' and decision != 'No':
-    decision = input('Do you want to calculate the radial voidage of the bed (this might take more than an hour)? Yes, No?')
-    if decision != 'Yes' and decision != 'No':
-        print("your answer is not acceptable, please enter Yes or No")
-
-if decision == 'Yes':
-    print("calculating radial porosity ...")
-    radial_voidage()
+# #radial porosity measurment
+# decision = ''
+# while decision != 'Yes' and decision != 'No':
+#     decision = input('Do you want to calculate the radial voidage of the bed (this might take more than an hour)? Yes, No?')
+#     if decision != 'Yes' and decision != 'No':
+#         print("your answer is not acceptable, please enter Yes or No")
+#
+# if decision == 'Yes':
+#     print("calculating radial porosity ...")
+#     radial_voidage()
 
 
 

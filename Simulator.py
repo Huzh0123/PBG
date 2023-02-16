@@ -18,28 +18,24 @@ def rigidbody_simulation(Particle_type, last_particle_drop_frame):
     interval =  parameters.particle_radius
     x_y_range = list(np.arange(co_min,co_max,interval))
     phi_range = list(np.arange(0.0,6.28,0.5))
-    pellet = {'sphere' : 0, 'cylinder' : 1, 'Raschig Ring':2, 'f_point_star':3, 'four_holes':4, 'three_holes':5, 'tri_lobes': 6, 'quadrilobes' : 7, 'four_hole_sphere' :8}
+    pellet = {'sphere' : 0, 'cylinder' : 1, 'Raschig Ring':2, 'user_defined':3}
     pellet_key = pellet[Particle_type]
+
     simulation_current_frame = 1
 #    scene = bpy.context.scene
 #    fp = scene.render.filepath
-    if pellet_key == 4:
-        from fh import four_holes_coor
-        vectors = four_holes_coor()
-    elif pellet_key == 5:
-        from three_holes import three_holes_coor
-        vectors = three_holes_coor()
-    else:
-        vectors=[]
     i = 0
     for i in range(last_particle_drop_frame):
         if (simulation_current_frame % 10) == 0.0:
-            part_generation(pellet_key,x_y_range,phi_range,top,vectors)
-        
+
+            part_generation(pellet_key,x_y_range,phi_range,top,0)
+
+
         bpy.context.scene.frame_set(frame = simulation_current_frame)
 #        scene.render.filepath = fp + str(i+1)
 #        bpy.ops.render.render(write_still=True)
         simulation_current_frame += 1
+    print(simulation_current_frame)
     return(simulation_current_frame)
     
 
