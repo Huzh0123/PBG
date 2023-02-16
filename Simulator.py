@@ -27,6 +27,7 @@ def rigidbody_simulation(Particle_type, last_particle_drop_frame):
     i = 0
     for i in range(last_particle_drop_frame):
         if (simulation_current_frame % 10) == 0.0:
+            print('Frame: ', simulation_current_frame)
 
             part_generation(pellet_key,x_y_range,phi_range,top,0)
 
@@ -35,7 +36,7 @@ def rigidbody_simulation(Particle_type, last_particle_drop_frame):
 #        scene.render.filepath = fp + str(i+1)
 #        bpy.ops.render.render(write_still=True)
         simulation_current_frame += 1
-    print(simulation_current_frame)
+
     return(simulation_current_frame)
     
 
@@ -52,11 +53,12 @@ def steady_state(simulation_current_frame):
     z_prev = [0]*size
     d = [1]*size
     Stop = False
+    count = 0
  #   scene = bpy.context.scene
  #   fp = scene.render.filepath
  #   i = simulation_current_frame
     while ( Stop == False ):
-            
+        print(count)
         i = 0
         for obj in bpy.context.selected_objects:
             current_obj = obj
@@ -66,10 +68,11 @@ def steady_state(simulation_current_frame):
             i = i+1
         if max(d) < 0.05:
             Stop = True
+
         bpy.context.scene.frame_set(frame = simulation_current_frame)
 #        scene.render.filepath = fp + str(simulation_current_frame)
 #        bpy.ops.render.render(write_still=True)
         simulation_current_frame += 1
-
+        count = count + 1
     return(d)
 

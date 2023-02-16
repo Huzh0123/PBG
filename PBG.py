@@ -57,7 +57,8 @@ else:
 
 #generating the particles and filling up the tube
 print("Filling up the bed....")
-print("Solver iterations per step: ",bpy.context.scene.rigidbody_world.solver_iterations) 
+print("Solver iterations per step: ",bpy.context.scene.rigidbody_world.solver_iterations)
+print(last_particle_drop_frame)
 simulation_current_frame = rigidbody_simulation(Particle_type, last_particle_drop_frame)
 
 bpy.ops.object.select_by_type( type = 'MESH')
