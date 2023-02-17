@@ -1,17 +1,8 @@
-##
-
-print('*******************************************',"\n"
-      "Packed bed generator module (v-1.1)","\n"
-      "by B Partopour & AG Dixon†", "\n"
-      "Heat and Mass Transfer Lab","\n"
-      "Worcester Polytechnic Institute","\n"
-      "Reference : https://doi.org/10.1016/j.powtec.2017.09.009","\n"
-      '*********************************************'
-)
-#Main Program
 
 import sys
 import os
+
+
 CurrentDir = os.getcwd()	#get directory in which PBG.py is stored
 sys.path.append(CurrentDir) #Add filepath to system path
 print(CurrentDir, "added to system path.") #Report to user
@@ -37,7 +28,6 @@ print("Welcome to the generator")
 print("Initializing the parameters ...")
 #Geometry input parameters
 
-Particle_type = str()
 Particle_type = parameters.Particle_type
 cyl_radius = parameters.cyl_radius
 cyl_depth = parameters.cyl_depth

@@ -12,7 +12,7 @@ def read_off(filename):
         m = int(m)
         for i in range(n):
             value = f.readline().rstrip().split(' ')
-            points.append([float(x)*0.1 for x in value[:3]])
+            points.append([float(x) for x in value[:3]])
         for i in range(m):
             value = f.readline().rstrip().split(' ')
             faces.append([int(x) for x in value[1:]])

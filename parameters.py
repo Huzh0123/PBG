@@ -11,15 +11,15 @@ Particle_type = 'user_defined'
 off_path = r'.\models\Cut01.off'
 ##Tube's dimensions
 # Raduis of the Tube
-cyl_radius = 0.3
+cyl_radius = 4
 # Length of the Tube
 #Warning! This is not the length of the packing. The packing length depends on number of particles. However, this should be in a safe-side to avoid an overload!
-cyl_depth = 1
+cyl_depth = 50
 
 
 ## Particles Properties
 #Number of Particles
-number_of_particle = 300
+number_of_particle = 200
 #Particle radius !! in case of Rashig Ring this is outer radius
 particle_radius = 0.5
 #particle innter radius for extruded geometries
@@ -56,7 +56,7 @@ file_name =r'D:\PBG\500_fh_N=6.txt'
 #Where to save the blender working file? this file gives access to the packing with discrete particles
 blender_file_path = r"D:\PBG\working_bed_X.blend"
 ## Stl Export properties
-file_path = r"D:\PBG\500_tri_N=4.7.stl"
+file_path = r"D:\PBG\Cut01.stl"
 ## Stl Export for capped geometry in case of spherical particles
 file_path_capped = r"D:\PBG\capped_bed.stl"
 ## Where do you want to save the radial voidage results?
