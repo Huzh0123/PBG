@@ -24,9 +24,8 @@ def read_off(filename):
 
     return points, edges, faces
 
-def user_defined(path, depth, location, rotation):
-    import numpy as np
-    import math
+
+def user_defined(path, location, rotation):
     import bpy
     import bmesh
 
@@ -45,6 +44,5 @@ def user_defined(path, depth, location, rotation):
     obj.select = True
     bpy.context.scene.objects.active =obj
     bpy.context.object.location = location
-    bpy.context.object.scale[2] = depth/2
     bpy.context.object.rotation_euler = rotation
 

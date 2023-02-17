@@ -60,7 +60,6 @@ def part_generation(pellet_key,x_y_range,phi_range,top,flag):
         elif pellet_key == 3:
             user_defined(
                 path=parameters.off_path,
-                depth=parameters.particle_length,
                 location=(x[i], y[i], z[i]),
                 rotation=(x_r[i], y_r[i], z_r[i]))
 
