@@ -11,7 +11,7 @@ Particle_type = 'user_defined'
 off_path = r'.\models\Cut02.off'
 ##Tube's dimensions
 # Raduis of the Tube
-cyl_radius = 4
+cyl_radius = 5
 # Length of the Tube
 #Warning! This is not the length of the packing. The packing length depends on number of particles. However, this should be in a safe-side to avoid an overload!
 cyl_depth = 50
@@ -19,11 +19,11 @@ cyl_depth = 50
 
 ## Particles Properties
 #Number of Particles
-number_of_particle = 100
+number_of_particle = 300
 #Particle radius !! in case of Rashig Ring this is outer radius
-particle_radius = 0.5
+particle_radius = 10
 #particle innter radius for extruded geometries
-particle_inner_radius = 0.2
+particle_inner_radius = 10
 #Particle Length (for cylinders, in case of spheres leave it as default)
 particle_length = 1
 
@@ -32,9 +32,9 @@ particle_length = 1
 #Collision Shape, valid types: 'MESH', 'CONVEX_HULL', 'SPHERE'
 collision_shape = 'CONVEX_HULL'
 #Surface Friction Factor ( 0 < friction_factor < 1 )
-friction_factor = 0.2
+friction_factor = 0.0
 #Surface Restitution Factor (0 < restitution_factor < 1)
-restitution_factor = 0.2
+restitution_factor = 0.0
 #Usinig Coloision Margin: Yes (True), NO (False)
 use_margin = True
 #Colosion margin (lower value = more accuracy, 0 perfect value)
@@ -45,7 +45,6 @@ collision_margin = 0.0
 linear_damping = 0.2
 #rotational_dampin
 rotational_damping = 0.1
-
 #Do you want to remove the tube after simulation?
 remove_the_tube = True
 

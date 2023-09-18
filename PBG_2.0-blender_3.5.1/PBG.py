@@ -58,7 +58,6 @@ else:
 #generating the particles and filling up the tube
 print("Filling up the bed....")
 print("Solver iterations per step: ",bpy.context.scene.rigidbody_world.solver_iterations)
-print(last_particle_drop_frame)
 simulation_current_frame = rigidbody_simulation(Particle_type, last_particle_drop_frame)
 
 bpy.ops.object.select_by_type( type = 'MESH')
@@ -67,7 +66,7 @@ print("Reaching the steady_state condition")
 distance=steady_state(simulation_current_frame)
 bpy.ops.object.select_all(action = 'TOGGLE')#removing the container
 if parameters.remove_the_tube == True:
-    bpy.data.objects['Cylinder'].select = True
+    bpy.data.objects['Cylinder'].select_set(True)
     bpy.ops.object.delete(use_global = False)
 
 #Do we want to get the angle distribution? if so, in parameters.py set the angle_dist to True

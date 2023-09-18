@@ -25,14 +25,14 @@ def part_generation(pellet_key,x_y_range,phi_range,top,flag):
         x = random.sample(pop_2,5)
         y = random.sample(pop_2,5)
         numb = 5
-    else: 
+    else:
         x = random.sample(x_y_range, 5)
         y = random.sample(x_y_range, 5)
         numb = 5
     z = random.sample(range(top, top + 8),5)
     x_r = random.sample(phi_range, 5)
     y_r = random.sample(phi_range, 5)
-    z_r = random.sample(phi_range, 5) 
+    z_r = random.sample(phi_range, 5)
 
 
     for i in range(numb):
@@ -78,11 +78,12 @@ def part_generation(pellet_key,x_y_range,phi_range,top,flag):
 
 def tube_generation(cyl_radius, cyl_depth):
 
-    cyl_vertices = 100
+    cyl_vertices = 4
     bpy.ops.mesh.primitive_cylinder_add(location = (0,0,0),
                                         vertices = cyl_vertices,
                                         radius = cyl_radius,
                                         depth = cyl_depth)
+
     obj = bpy.ops.object
     obj.mode_set(mode = 'EDIT')
     bpy.ops.mesh.select_all(action = 'TOGGLE')
@@ -98,7 +99,7 @@ def tube_generation(cyl_radius, cyl_depth):
     obj_new.mode_set(mode = 'OBJECT')
     obj_new.modifier_add( type = 'SOLIDIFY')
     bpy.context.object.modifiers["Solidify"].thickness  = 0.02
-    obj_new.modifier_apply(apply_as = 'DATA', modifier = "Solidify")
+    obj_new.modifier_apply(modifier = "Solidify")
     bpy.ops.rigidbody.object_add(type = 'PASSIVE')
     obj = bpy.context.object.rigid_body
     obj.collision_shape = 'MESH'
@@ -109,6 +110,6 @@ def tube_generation(cyl_radius, cyl_depth):
     #activating split impulse
     bpy.context.scene.rigidbody_world.enabled = True
     bpy.context.scene.rigidbody_world.use_split_impulse = True
-    bpy.context.scene.rigidbody_world.steps_per_second = 200
+    bpy.context.scene.rigidbody_world.substeps_per_frame = 200
     bpy.context.scene.rigidbody_world.solver_iterations = 200
     

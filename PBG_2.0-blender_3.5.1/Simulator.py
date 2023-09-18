@@ -13,7 +13,7 @@ import parameters
 def rigidbody_simulation(Particle_type, last_particle_drop_frame):
     from Rigidbody_generator import part_generation
     import numpy as np
-    co_max = 0.6*parameters.cyl_radius - parameters.particle_radius
+    co_max = parameters.cyl_radius / 1.5
     co_min = -1.0 * co_max
     top = round((parameters.cyl_depth/4) - 10)
     interval =  parameters.particle_radius
@@ -58,7 +58,7 @@ def steady_state(simulation_current_frame):
  #   scene = bpy.context.scene
  #   fp = scene.render.filepath
  #   i = simulation_current_frame
-    while ( Stop == False and count <= 5000 ):
+    while ( Stop == False and count <= 50 ):
 
         i = 0
         for obj in bpy.context.selected_objects:
@@ -68,7 +68,7 @@ def steady_state(simulation_current_frame):
             x_prev[i],y_prev[i],z_prev[i] = x[i],y[i],z[i]
             i = i+1
         print('steady_state: ', count, 'max(d): ', max(d))
-        if max(d) < 0.05:
+        if max(d) < 0.1:
             Stop = True
 
         bpy.context.scene.frame_set(frame = simulation_current_frame)

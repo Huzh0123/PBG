@@ -40,9 +40,8 @@ def user_defined(path, location, rotation):
     bm.free()
     obj = bpy.data.objects.new("Rashig", mesh)
     scene = bpy.context.scene
-    scene.objects.link(obj)
-    obj.select = True
-    bpy.context.scene.objects.active =obj
+    scene.collection.objects.link(obj)
+    obj.select_set(True)
+    bpy.context.view_layer.objects.active = obj
     bpy.context.object.location = location
     bpy.context.object.rotation_euler = rotation
-
