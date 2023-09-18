@@ -1,14 +1,3 @@
-##
-
-print('*******************************************',"\n"
-      "Packed bed generator module (v-1.1)","\n"
-      "by B Partopour & AG Dixon†", "\n"
-      "Heat and Mass Transfer Lab","\n"
-      "Worcester Polytechnic Institute","\n"
-      "Reference : https://doi.org/10.1016/j.powtec.2017.09.009","\n"
-      '*********************************************'
-)
-#Main Program
 
 import sys
 import os
@@ -37,7 +26,6 @@ print("Welcome to the generator")
 print("Initializing the parameters ...")
 #Geometry input parameters
 
-Particle_type = str()
 Particle_type = parameters.Particle_type
 cyl_radius = parameters.cyl_radius
 cyl_depth = parameters.cyl_depth
@@ -85,7 +73,14 @@ bpy.ops.wm.save_as_mainfile(filepath = parameters.blender_file_path)
 #to export the bed uncomment the next 2 lines: 
 #bpy.ops.object.select_all(action = 'TOGGLE')
 print("Exporting the geometry as a STL file...")
-bpy.ops.export_mesh.stl(filepath=parameters.file_path, check_existing=True, axis_forward='Y', axis_up='Z', filter_glob= ".STL", global_scale=1, ascii=False, use_mesh_modifiers=True)
+bpy.ops.export_mesh.stl(filepath=parameters.file_path,
+                        check_existing=True,
+                        axis_forward='Y',
+                        axis_up='Z',
+                        filter_glob= ".STL",
+                        global_scale=0.01,
+                        ascii=False,
+                        use_mesh_modifiers=True)
 
 # #radial porosity measurment
 # decision = ''

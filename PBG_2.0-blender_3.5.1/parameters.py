@@ -8,10 +8,14 @@
 # defining particle type, valid types: 'sphere', 'cylinder', 'Raschig Ring', 'user_defined'
 Particle_type = 'user_defined'
 
-off_path = r'.\models\Cut02.off'
+off_path = r'.\models\capsule.off'
 ##Tube's dimensions
 # Raduis of the Tube
+<<<<<<< HEAD:PBG_2.0-blender_3.5.1/parameters.py
 cyl_radius = 5
+=======
+cyl_radius = 6
+>>>>>>> 78c181517a40e26781805217555175f2978eb46b:parameters.py
 # Length of the Tube
 #Warning! This is not the length of the packing. The packing length depends on number of particles. However, this should be in a safe-side to avoid an overload!
 cyl_depth = 50
@@ -19,7 +23,11 @@ cyl_depth = 50
 
 ## Particles Properties
 #Number of Particles
+<<<<<<< HEAD:PBG_2.0-blender_3.5.1/parameters.py
 number_of_particle = 300
+=======
+number_of_particle = 1000
+>>>>>>> 78c181517a40e26781805217555175f2978eb46b:parameters.py
 #Particle radius !! in case of Rashig Ring this is outer radius
 particle_radius = 10
 #particle innter radius for extruded geometries
@@ -55,7 +63,7 @@ file_name =r'D:\PBG\500_fh_N=6.txt'
 #Where to save the blender working file? this file gives access to the packing with discrete particles
 blender_file_path = r"D:\PBG\working_bed_X.blend"
 ## Stl Export properties
-file_path = r"D:\PBG\Cut02.stl"
+file_path = r"D:\PBG\capsule.stl"
 ## Stl Export for capped geometry in case of spherical particles
 file_path_capped = r"D:\PBG\capped_bed.stl"
 ## Where do you want to save the radial voidage results?
