@@ -1,52 +1,38 @@
 
 import sys
 import os
-CurrentDir = os.getcwd()	#get directory in which PBG.py is stored
-sys.path.append(CurrentDir) #Add filepath to system path
-print(CurrentDir, "added to system path.") #Report to user
+CurrentDir = os.getcwd()	
+sys.path.append(CurrentDir) 
+print(CurrentDir, "added to system path.") 
 
 import parameters
-
-import bpy 
-import importlib
-from radial_voidage import radial_voidage
-from Rigidbody_generator import tube_generation
-from Rigidbody_generator import part_generation
-from Simulator import steady_state
-from Simulator import rigidbody_simulation
-from bed_properties import angle_distribution
-
-# Reloading parameters in case of re-runs
-if "parameters" in locals():
-    importlib.reload(parameters)
-if "radial_porosity" in locals():
-    importlib.reload(radial_porosity)
+if parameters.Simulator_option == 'rigidbody':
+    import bpy 
+    from Rigidbody_generator import container_generation, part_generation
+    from Simulator import steady_state, rigidbody_simulation
+else:
+    import radial_voidage
 
 print("Welcome to the generator")   
 print("Initializing the parameters ...")
 #Geometry input parameters
-
 Particle_type = parameters.Particle_type
-cyl_radius = parameters.cyl_radius
-cyl_depth = parameters.cyl_depth
+container_radius = parameters.container_radius # circumcircle radius 
+container_depth = parameters.container_depth
 number_of_particle = parameters.number_of_particle
-#..................................................
+bpy.data.scenes["Scene"].unit_settings.system = 'METRIC'
 
-#Generating the Tube
-tube_generation(cyl_radius, cyl_depth)
-#..................................................
-
+#Generating the container
+container_generation(container_radius, container_depth)
 bpy.context.scene.frame_end = 50000
 bpy.context.scene.rigidbody_world.point_cache.frame_end = 50000
-if cyl_radius < 5:
-    last_particle_drop_frame = int((number_of_particle)*10)
-else: 
-    last_particle_drop_frame = int((number_of_particle / 5) * 10)
+
+frames = int(number_of_particle * 10 / 5) 
 
 #generating the particles and filling up the tube
 print("Filling up the bed....")
 print("Solver iterations per step: ",bpy.context.scene.rigidbody_world.solver_iterations)
-simulation_current_frame = rigidbody_simulation(Particle_type, last_particle_drop_frame)
+simulation_current_frame = rigidbody_simulation(Particle_type, frames)
 
 bpy.ops.object.select_by_type( type = 'MESH')
 #continuing the simulation till steady-state (condition: max particle velocity < 0.01)
@@ -57,15 +43,6 @@ if parameters.remove_the_tube == True:
     bpy.data.objects['Cylinder'].select_set(True)
     bpy.ops.object.delete(use_global = False)
 
-#Do we want to get the angle distribution? if so, in parameters.py set the angle_dist to True
-
-if parameters.angle_dist == True:
-    print("Calculating the particles angle distributions in the bed...")
-    bpy.ops.object.select_by_type( type = 'MESH')
-    file_name = parameters.file_name
-    angle_distribution(file_name)
-    
-    
 #Saving the blender file to have the packing with separated particles
 print("Saving a copy of the packing...")
 bpy.ops.wm.save_as_mainfile(filepath = parameters.blender_file_path)
@@ -82,6 +59,8 @@ bpy.ops.export_mesh.stl(filepath=parameters.file_path,
                         ascii=False,
                         use_mesh_modifiers=True)
 
+
+
 # #radial porosity measurment
 # decision = ''
 # while decision != 'Yes' and decision != 'No':
@@ -92,8 +71,6 @@ bpy.ops.export_mesh.stl(filepath=parameters.file_path,
 # if decision == 'Yes':
 #     print("calculating radial porosity ...")
 #     radial_voidage()
-
-
 
 print("Done!")
 print("Goodbye!")

@@ -10,15 +10,15 @@ import math
 import numpy as np
 import parameters
 
-def rigidbody_simulation(Particle_type, last_particle_drop_frame):
+def rigidbody_simulation(Particle_type, frames):
     from Rigidbody_generator import part_generation
     import numpy as np
-    co_max = parameters.cyl_radius / 1.5
-    co_min = -1.0 * co_max
-    top = round((parameters.cyl_depth/4) - 10)
-    interval =  parameters.particle_radius
-    x_y_range = list(np.arange(co_min,co_max,interval))
-    phi_range = list(np.arange(0.0,6.28,0.5))
+    co = parameters.container_radius / 3
+    top = int(parameters.container_depth / 4) - 10
+    z_range = list(np.linspace(top, top+10, 8))
+    x_y_range = list(np.linspace(-co, co, 8))
+    phi_range = list(np.arange(0.0, 6.28, 0.5))
+
     pellet = {'sphere' : 0, 'cylinder' : 1, 'Raschig Ring':2, 'user_defined':3}
     pellet_key = pellet[Particle_type]
 
@@ -26,11 +26,11 @@ def rigidbody_simulation(Particle_type, last_particle_drop_frame):
 #    scene = bpy.context.scene
 #    fp = scene.render.filepath
     i = 0
-    for i in range(last_particle_drop_frame):
+    for i in range(frames):
         if (simulation_current_frame % 10) == 0.0:
-            print('Frame: ', str(simulation_current_frame) + ' of ' + str(last_particle_drop_frame))
+            print('Frame: ', str(simulation_current_frame) + ' of ' + str(frames))
 
-            part_generation(pellet_key,x_y_range,phi_range,top,0)
+            part_generation(pellet_key,x_y_range,phi_range,z_range)
 
 
         bpy.context.scene.frame_set(frame = simulation_current_frame)
@@ -40,9 +40,6 @@ def rigidbody_simulation(Particle_type, last_particle_drop_frame):
 
     return(simulation_current_frame)
     
-
-
-
 def steady_state(simulation_current_frame):
     
     size= len(bpy.context.selected_objects)
@@ -58,7 +55,7 @@ def steady_state(simulation_current_frame):
  #   scene = bpy.context.scene
  #   fp = scene.render.filepath
  #   i = simulation_current_frame
-    while ( Stop == False and count <= 50 ):
+    while ( Stop == False and count <= 500 ):
 
         i = 0
         for obj in bpy.context.selected_objects:
