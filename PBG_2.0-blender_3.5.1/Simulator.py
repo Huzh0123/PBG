@@ -65,7 +65,7 @@ def steady_state(simulation_current_frame):
             x_prev[i],y_prev[i],z_prev[i] = x[i],y[i],z[i]
             i = i+1
         print('steady_state: ', count, 'max(d): ', max(d))
-        if max(d) < 0.1:
+        if max(d) < 0.01:
             Stop = True
 
         bpy.context.scene.frame_set(frame = simulation_current_frame)
