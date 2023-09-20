@@ -29,7 +29,7 @@ def part_generation(pellet_key,x_y_range,phi_range,z_range):
             
             bpy.ops.mesh.primitive_uv_sphere_add(segments=28,
                                              ring_count=28,
-                                             size = parameters.particle_radius,
+                                             radius = parameters.particle_radius,
                                              location = (x[i],y[i],z[i]))
                                              
         elif pellet_key == 1:

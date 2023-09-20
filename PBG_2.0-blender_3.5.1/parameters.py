@@ -3,10 +3,10 @@
 
 
 # simulator option, valid options: 'rigidbody', 'radial_voidage'
-Simulator_option = 'radial_voidage'
+Simulator_option = 'rigidbody'
 
 # defining particle type, valid types: 'sphere', 'cylinder', 'Raschig Ring', 'user_defined'
-Particle_type = 'user_defined'
+Particle_type = 'sphere'
 # If Particle_type = 'user_defined', the address of the off file must be provided. 
 off_file_path = r'.\models\Cut01.off'
 # Raduis of the container
@@ -14,11 +14,11 @@ container_radius = 5
 # Length of the container
 container_depth = 50
 # Container projection shape, represented as a regular polygon
-container_projection_shape = 4
+container_projection_shape = 50
 
 ## Particles Properties
 #Number of Particles
-number_of_particle = 100
+number_of_particle = 1000
 #Particle radius !! in case of Rashig Ring this is outer radius
 particle_radius = 0.5
 #particle innter radius for extruded geometries

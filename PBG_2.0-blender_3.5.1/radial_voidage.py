@@ -5,7 +5,7 @@ import numpy as np
 import math
 import os
 import parameters 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 ###### function q_inside checks if a point is inside the "solid" packing based on ray-casting algorithm ###
 ###### ray casting algorithm can be mathematically proved by Jordan curve theorm #########
@@ -99,12 +99,10 @@ def radial_voidage():
     # setting max and min height of the radial surface
 
     # generating a cylindrical surface mesh 
-    loop_num = 99
-    r_p = [0] * loop_num
-    w_d = [0] * loop_num
+    bed_volume = []
+    container_volume = []
     Area_face = pow(delta_l,2)
     list_z = [z for z in np.arange(-u[2]/2, u[2]/2/2, delta_l)]
-    list_z_eps = []
     for z in list_z:
 
         point_co =[(x,y,z) for (x,y) in probes_list]
@@ -119,10 +117,12 @@ def radial_voidage():
 
         ring_area = Area_face * len(probes_list) 
         packed_area = Area_face * count
+        bed_volume.append(packed_area * delta_l)
+        container_volume.append(ring_area * delta_l)
         eplison = 1 - (packed_area / ring_area)
         print('zi: {:.6f}, eplison_zi: {:.6f}, '.format(z, eplison))
-        list_z_eps.append([z, eplison])
-        
+
+    
     print('100% progress...Radial voidage calculation is finished!')
     print('writing the data...')
     print('Done! :)')
