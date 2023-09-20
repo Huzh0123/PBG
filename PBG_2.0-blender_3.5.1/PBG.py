@@ -8,7 +8,7 @@ print(CurrentDir, "added to system path.")
 import parameters
 if parameters.Simulator_option == 'rigidbody':
     import bpy 
-    from Rigidbody_generator import container_generation, part_generation
+    from Rigidbody_generator import container_generation
     from Simulator import steady_state, rigidbody_simulation
     print("Welcome to the generator")   
     print("Initializing the parameters ...")
@@ -57,17 +57,7 @@ if parameters.Simulator_option == 'rigidbody':
 
 elif parameters.Simulator_option == 'radial_voidage':
     import radial_voidage
-
-    #radial porosity measurment
-    decision = ''
-    while decision != 'Yes' and decision != 'No':
-        decision = input('Do you want to calculate the radial voidage of the bed (this might take more than an hour)? Yes, No?')
-        if decision != 'Yes' and decision != 'No':
-            print("your answer is not acceptable, please enter Yes or No")
-    
-    if decision == 'Yes':
-        print("calculating radial porosity ...")
-        radial_voidage()
+    radial_voidage.radial_voidage()
 
 print("Done!")
 print("Goodbye!")

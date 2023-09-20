@@ -72,11 +72,18 @@ def container_generation(container_radius, container_depth):
                                         vertices = container_projection_shape,
                                         radius = container_radius,
                                         depth = container_depth)
-
+    bpy.ops.object.select_by_type( type = 'MESH')
+    bpy.ops.export_mesh.stl(filepath=parameters.container_path,
+                            check_existing=True,
+                            axis_forward='Y',
+                            axis_up='Z',
+                            filter_glob= ".STL",
+                            global_scale=0.01,
+                            ascii=False,
+                            use_mesh_modifiers=True)
     obj = bpy.ops.object
     obj.mode_set(mode = 'EDIT')
     bpy.ops.mesh.select_all(action = 'TOGGLE')
-
     obj = bpy.context.edit_object
     me = obj.data
     bm = bmesh.from_edit_mesh(me)
@@ -101,4 +108,3 @@ def container_generation(container_radius, container_depth):
     bpy.context.scene.rigidbody_world.use_split_impulse = True
     bpy.context.scene.rigidbody_world.substeps_per_frame = 200
     bpy.context.scene.rigidbody_world.solver_iterations = 200
-    

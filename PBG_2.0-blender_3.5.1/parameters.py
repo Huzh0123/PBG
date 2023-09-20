@@ -3,7 +3,7 @@
 
 
 # simulator option, valid options: 'rigidbody', 'radial_voidage'
-Simulator_option = 'rigidbody'
+Simulator_option = 'radial_voidage'
 
 # defining particle type, valid types: 'sphere', 'cylinder', 'Raschig Ring', 'user_defined'
 Particle_type = 'user_defined'
@@ -18,7 +18,7 @@ container_projection_shape = 4
 
 ## Particles Properties
 #Number of Particles
-number_of_particle = 500
+number_of_particle = 100
 #Particle radius !! in case of Rashig Ring this is outer radius
 particle_radius = 0.5
 #particle innter radius for extruded geometries
@@ -56,6 +56,7 @@ file_name =r'D:\PBG\500_fh_N=6.txt'
 blender_file_path = r"D:\PBG\working_bed_X.blend"
 ## Stl Export properties
 file_path = r"D:\PBG\Cut01.stl"
+container_path = r"D:\PBG\container.stl"
 ## Stl Export for capped geometry in case of spherical particles
 file_path_capped = r"D:\PBG\capped_bed.stl"
 ## Where do you want to save the radial voidage results?
