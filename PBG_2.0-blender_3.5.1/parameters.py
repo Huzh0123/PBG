@@ -12,7 +12,7 @@ off_file_path = r'.\models\Cut01.off'
 # Raduis of the container
 container_radius = 5
 # Length of the container
-container_depth = 50
+container_depth = 150
 # Container projection shape, represented as a regular polygon
 container_projection_shape = 50
 

@@ -23,7 +23,11 @@ if parameters.Simulator_option == 'rigidbody':
     bpy.context.scene.frame_end = 50000
     bpy.context.scene.rigidbody_world.point_cache.frame_end = 50000
 
-    frames = int(number_of_particle * 10 / 5) 
+    if parameters.number_of_particle <= 500:
+        frames = int(number_of_particle * 10 / 5) 
+    else:
+        frames = int(number_of_particle * 2 / 5) 
+
 
     #generating the particles and filling up the tube
     print("Filling up the bed....")
