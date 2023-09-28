@@ -59,9 +59,13 @@ if parameters.Simulator_option == 'rigidbody':
                             ascii=False,
                             use_mesh_modifiers=True)
 
-elif parameters.Simulator_option == 'radial_voidage':
-    import radial_voidage
-    radial_voidage.radial_voidage()
+elif parameters.Simulator_option == 'voidage':
+    import voidage
+    voidage.voidage()
+    voidage.radial_voidage()
+
+
 
 print("Done!")
 print("Goodbye!")
+

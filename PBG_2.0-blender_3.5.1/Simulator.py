@@ -11,8 +11,10 @@ import parameters
 def rigidbody_simulation(Particle_type, frames):
     from Rigidbody_generator import part_generation
     import numpy as np
+
     co = parameters.container_radius / 4
     top = int(parameters.container_depth / 4) - 10
+
     z_range = list(np.linspace(top, top+10, 8))
     x_y_range = list(np.linspace(-co, co, 8))
     phi_range = list(np.arange(0.0, 6.28, 0.5))
@@ -30,7 +32,6 @@ def rigidbody_simulation(Particle_type, frames):
             part_generation(pellet_key,x_y_range,phi_range,z_range)
         bpy.context.scene.frame_set(frame = simulation_current_frame)
         simulation_current_frame += 1
-
     return(simulation_current_frame)
     
 def steady_state(simulation_current_frame):

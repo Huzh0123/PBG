@@ -2,14 +2,8 @@
 #Rigid-body generator module
 import bpy
 import bmesh
-import math 
 import random
 import parameters
-import numpy as np
-
-x=[]
-y=[]
-z=[]
 
 def part_generation(pellet_key,x_y_range,phi_range,z_range):
 

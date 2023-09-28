@@ -2,8 +2,8 @@
 #Defining parameters for the simulation 
 
 
-# simulator option, valid options: 'rigidbody', 'radial_voidage'
-Simulator_option = 'rigidbody'
+# simulator option, valid options: 'rigidbody', 'voidage'
+Simulator_option = 'voidage'
 
 # defining particle type, valid types: 'sphere', 'cylinder', 'Raschig Ring', 'user_defined'
 Particle_type = 'sphere'
@@ -55,9 +55,9 @@ file_name =r'D:\PBG\500_fh_N=6.txt'
 #Where to save the blender working file? this file gives access to the packing with discrete particles
 blender_file_path = r"D:\PBG\working_bed_X.blend"
 ## Stl Export properties
-file_path = r"D:\PBG\Cut01.stl"
+file_path = r"D:\PBG\bed.stl"
 container_path = r"D:\PBG\container.stl"
 ## Stl Export for capped geometry in case of spherical particles
 file_path_capped = r"D:\PBG\capped_bed.stl"
 ## Where do you want to save the radial voidage results?
-file_path_2 = r"D:\PBG\500_fh_N=6.txt"
+file_path_2 = r"D:\PBG\500_fh_N=6.csv"
